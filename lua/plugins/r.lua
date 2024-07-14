@@ -14,6 +14,7 @@ return {
                         vim.api.nvim_buf_set_keymap(0, "v", "<Enter>", "<Plug>RSendSelection", {})
                     end
                 },
+                csv_app = "terminal:vd",
                 min_editor_width = 72,
                 rconsole_width = 78,
                 disable_cmds = {
