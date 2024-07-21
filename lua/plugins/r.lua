@@ -1,10 +1,9 @@
-return { 
+return {
   {
         "R-nvim/R.nvim",
         config = function ()
             -- Create a table with the options to be passed to setup()
-            local opts = {
-                R_args = {"--quiet", "--no-save"},
+            local opts = { R_args = {"--quiet", "--no-save"},
                 hook = {
                     on_filetype = function ()
                         -- This function will be called at the FileType event
@@ -12,11 +11,17 @@ return {
                         -- opportunity to create mappings local to buffers.
                         vim.api.nvim_buf_set_keymap(0, "n", "<Enter>", "<Plug>RDSendLine", {})
                         vim.api.nvim_buf_set_keymap(0, "v", "<Enter>", "<Plug>RSendSelection", {})
+                        vim.api.nvim_buf_set_keymap(0, "n", "<LocalLeader>m", "<Cmd>lua require('r.send').cmd('tar_make()')<CR>", {})
+                        vim.api.nvim_buf_set_keymap(0, "n", "<LocalLeader>le", "<Cmd>lua require('r.send').cmd('targets::tar_load_everything()')<CR>", {})
+                        vim.api.nvim_buf_set_keymap(0, "n", "<LocalLeader>ll", "<Cmd>lua require('r.run').action('tar_load')<CR>", {})
+                        vim.api.nvim_buf_set_keymap(0, "n", "<LocalLeader>tm", "<Cmd>lua require('r.run').action('tar_make')<CR>", {})
+                        vim.api.nvim_buf_set_keymap(0, "n", "<LocalLeader>tr", "<Cmd>lua require('r.run').action('tar_read')<CR>", {})
                     end
                 },
                 csv_app = "terminal:vd",
                 min_editor_width = 72,
                 rconsole_width = 78,
+                rmdchunk = "``",
                 disable_cmds = {
                         "RClearConsole",
                         "RCustomStart",
@@ -35,7 +40,6 @@ return {
                 vim.g.rout_follow_colorscheme = true
             end,
         lazy = false
-         
   },
   {
     "nvim-treesitter/nvim-treesitter",
