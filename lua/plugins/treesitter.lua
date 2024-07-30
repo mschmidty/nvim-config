@@ -1,6 +1,9 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "Glench/Vim-Jinja2-Syntax"
+    },
     build = ":TSUpdate",
     config = function()
       local config = require("nvim-treesitter.configs")

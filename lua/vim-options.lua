@@ -14,3 +14,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.opt.swapfile = false
 
 vim.wo.relativenumber = true
+
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
