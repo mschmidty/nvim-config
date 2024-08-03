@@ -21,6 +21,7 @@ return {
             require("luasnip").lsp_expand(args.body)
           end,
         },
+        -- debug = true,
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),

@@ -5,7 +5,7 @@ return {
             -- Create a table with the options to be passed to setup()
             local opts = { R_args = {"--quiet", "--no-save"},
                 -- Below is for windows work maching only, should figure out how to only apply on windows.
-                -- R_path = 'C:\\Users\\MichaelSchmidt2\\AppData\\Local\\Programs\\R\\R-4.3.0\\bin\\x64',
+                R_path = 'C:\\Users\\MichaelSchmidt2\\AppData\\Local\\Programs\\R\\R-4.3.0\\bin\\x64',
                 hook = {
                     on_filetype = function ()
                         -- This function will be called at the FileType event
