@@ -3,9 +3,9 @@ return {
         "R-nvim/R.nvim",
         config = function ()
             -- Create a table with the options to be passed to setup()
-            local opts = { R_args = {"--quiet", "--no-save"},
+            local opts = { 
+                R_args = {"--quiet", "--no-save"},
                 -- Below is for windows work maching only, should figure out how to only apply on windows.
-                R_path = 'C:\\Users\\MichaelSchmidt2\\AppData\\Local\\Programs\\R\\R-4.3.0\\bin\\x64',
                 hook = {
                     on_filetype = function ()
                         -- This function will be called at the FileType event
@@ -38,6 +38,9 @@ return {
                 if vim.env.R_AUTO_START == "true" then
                     opts.auto_start = 1
                     opts.objbr_auto_start = true
+                end
+                if vim.loop.os_uname().sysname != "Darwin" then
+                  opts.R_path = 'C:\\Users\\MichaelSchmidt2\\AppData\\Local\\Programs\\R\\R-4.3.0\\bin\\x64'
                 end
                 require("r").setup(opts)
                 vim.g.rout_follow_colorscheme = true
