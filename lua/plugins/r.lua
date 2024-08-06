@@ -39,7 +39,7 @@ return {
                     opts.auto_start = 1
                     opts.objbr_auto_start = true
                 end
-                if vim.loop.os_uname().sysname ~= "Darwin" then
+                if vim.loop.os_uname().sysname == "Windows_NT" then
                   opts.R_path = 'C:\\Users\\MichaelSchmidt2\\AppData\\Local\\Programs\\R\\R-4.3.0\\bin\\x64'
                 end
                 require("r").setup(opts)
