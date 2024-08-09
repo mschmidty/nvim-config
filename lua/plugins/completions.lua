@@ -16,7 +16,13 @@ return {
     },
     config = function()
       local cmp = require("cmp")
+      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       require("luasnip.loaders.from_vscode").lazy_load()
+
+      cmp.event:on(
+        'comfirm_done',
+        cmp_autopairs.on_confirm_done()
+      )
 
       cmp.setup({
         snippet = {
@@ -34,7 +40,7 @@ return {
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
