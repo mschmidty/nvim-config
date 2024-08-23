@@ -4,7 +4,9 @@ return {
     "williamboman/mason.nvim",
     lazy = false,
     config = function()
-      require("mason").setup()
+      require("mason").setup({
+        PATH = "prepend"
+      })
     end,
   },
   {
@@ -31,7 +33,6 @@ return {
         capabilities = capabilities
       })
       lspconfig.lua_ls.setup({
-        capabilities = capabilities
       })
       lspconfig.ltex.setup({
         cmd = {"ltex-ls"},
