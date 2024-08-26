@@ -18,6 +18,7 @@ return {
       local cmp = require("cmp")
       local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_lua").load({paths = "lua/snipets/r-snippets.lua"})
 
       cmp.event:on(
         'comfirm_done',
@@ -38,9 +39,17 @@ return {
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-n>"] = cmp.mapping.select_next_item {behavior = cmp.SelectBehavior.Insert},
+          ["<C-p>"] = cmp.mapping.select_prev_item {behavior = cmp.SelectBehavior.Insert},
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-y>"] = cmp.mapping(
+            cmp.mapping.confirm{
+              behavior = cmp.ConfirmBehavior.Insert,
+              select=true,
+              {"i", "c"}
+            }
+          )
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
