@@ -18,3 +18,5 @@ vim.wo.relativenumber = true
 
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
+
+vim.lsp.buf.format({ timeout_ms = 5000 })
