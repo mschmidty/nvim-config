@@ -27,7 +27,7 @@ return {
 			format_on_save = {
 				lsp_fallback = true,
 				async = false,
-				timeout_ms = 2000,
+				timeout_ms = 3000,
 			},
 		})
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
