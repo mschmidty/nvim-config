@@ -20,3 +20,11 @@ vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 
 vim.wo.wrap = false
+
+-- on wrap don't break lines
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "qmd" },
+	callback = function()
+		vim.opt_local.linebreak = true
+	end,
+})
