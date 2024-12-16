@@ -16,12 +16,14 @@ return {
 
 			-- Load your custom snippets from a custom directory
 			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets/" })
+			require("luasnip.loaders.from_lua").load({ paths = "~/AppData/Local/nvim/lua/snippets" })
 		end,
 	},
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"R-nvim/cmp-r",
+			-- "jalvesaq/cmp-zotcite",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -64,6 +66,8 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" }, -- For luasnip users.
 					{ name = "cmp_r" },
+					-- { name = "cmp_zotcite" },
+					{ name = "lua_ls" },
 				}, {
 					{ name = "buffer" },
 				}),
