@@ -20,7 +20,7 @@ return {
 				config = function()
 					local zotero = require("zotero")
 					zotero.setup({})
-					vim.keymap.set("n", "<leader>cc", ":Telescope zotero<cr>", { desc = "[z]otero" })
+					vim.keymap.set("n", "<leader>fz", ":Telescope zotero<cr>", { desc = "[z]otero" })
 				end,
 			},
 		},

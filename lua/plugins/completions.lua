@@ -4,13 +4,12 @@ return {
 	},
 	{
 		"L3MON4D3/LuaSnip",
+		run = "make install_jsregexp",
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
 		config = function()
-			local luasnip = require("luasnip")
-
 			-- Load VSCode-style snippets from 'friendly-snippets'
 			require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -23,7 +22,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"R-nvim/cmp-r",
-			-- "jalvesaq/cmp-zotcite",
+			"jmbuhr/cmp-pandoc-references",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -41,7 +40,7 @@ return {
 
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						("luasnip").lsp_expand(args.body)
 					end,
 				},
 				-- debug = true,
@@ -66,6 +65,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" }, -- For luasnip users.
 					{ name = "cmp_r" },
+					{ name = "pandoc_references" },
 					-- { name = "cmp_zotcite" },
 					{ name = "lua_ls" },
 				}, {
