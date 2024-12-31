@@ -29,4 +29,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.g.sqlite_clib_path = "C:\\Users\\MichaelSchmidt2\\AppData\\Local\\sqlite\\sqlite-dll-win-x64-3470200\\sqlite3.dll"
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  vim.g.sqlite_clib_path = "C:\\Users\\MichaelSchmidt2\\AppData\\Local\\sqlite\\sqlite-dll-win-x64-3470200\\sqlite3.dll"
+end
