@@ -30,7 +30,12 @@ return {
 
 			cmp.event:on("comfirm_done", cmp_autopairs.on_confirm_done())
 
+			_G.cmp_active = true
+
 			cmp.setup({
+				enabled = function()
+					return _G.cmp_active
+				end,
 				-- enabled = function()
 				-- 	if vim.bo.filetype == "markdown" then
 				-- 		return false
@@ -66,12 +71,15 @@ return {
 					{ name = "luasnip" }, -- For luasnip users.
 					{ name = "cmp_r" },
 					{ name = "pandoc_references" },
-					-- { name = "cmp_zotcite" },
 					{ name = "lua_ls" },
 				}, {
 					{ name = "buffer" },
 				}),
 			})
+			vim.keymap.set("n", "<leader>tc", function()
+				_G.cmp_active = not _G.cmp_active
+				print("nvim-cmp is now " .. (_G.cmp_active and "enabled" or "disabled"))
+			end, { desc = "Toggle nvim-cmp" })
 		end,
 	},
 }
