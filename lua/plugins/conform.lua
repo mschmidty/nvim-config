@@ -20,7 +20,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				markdown = { "prettier" },
-				quarto = { "my_styler" },
+				quarto = { "prettier","my_styler" },
 				r = { "my_styler" },
 				rmd = { "my_styler" },
 			},

@@ -22,7 +22,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"R-nvim/cmp-r",
-			"jmbuhr/cmp-pandoc-references",
+			"jc-doyle/cmp-pandoc-references",
 		},
 		config = function()
 			local cmp = require("cmp")
