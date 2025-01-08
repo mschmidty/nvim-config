@@ -80,7 +80,6 @@ return {
 			end
 			if vim.loop.os_uname().sysname == "Windows_NT" then
 				opts.R_path = "C:\\Users\\MichaelSchmidt2\\AppData\\Local\\Programs\\R\\R-4.3.0\\bin\\x64"
-				opts.csv_app = "terminal:visidata"
 			else
 			end
 			require("r").setup(opts)
