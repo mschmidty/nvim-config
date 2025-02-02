@@ -27,11 +27,13 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			local ls = require("luasnip")
 
 			cmp.event:on("comfirm_done", cmp_autopairs.on_confirm_done())
 
 			_G.cmp_active = true
 
+			ls.filetype_extend("php", { "html" })
 			cmp.setup({
 				enabled = function()
 					return _G.cmp_active
