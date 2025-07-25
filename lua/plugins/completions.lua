@@ -8,6 +8,7 @@ return {
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
+			"sdras/vue-vscode-snippets",
 		},
 		config = function()
 			-- Load VSCode-style snippets from 'friendly-snippets'
@@ -47,7 +48,7 @@ return {
 
 				snippet = {
 					expand = function(args)
-						("luasnip").lsp_expand(args.body)
+						ls.lsp_expand(args.body)
 					end,
 				},
 				-- debug = true,
@@ -72,10 +73,10 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" }, -- For luasnip users.
 					{ name = "cmp_r" },
-					{ name = "pandoc_references" },
-					{ name = "lua_ls" },
-				}, {
 					{ name = "buffer" },
+					{ name = "path" },
+					-- { name = "pandoc_references" },
+					-- { name = "lua_ls" },
 				}),
 			})
 			vim.keymap.set("n", "<leader>tc", function()

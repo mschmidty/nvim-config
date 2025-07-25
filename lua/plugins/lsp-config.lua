@@ -32,7 +32,9 @@ return {
 			lspconfig.html.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.lua_ls.setup({})
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.ltex.setup({
 				cmd = { "ltex-ls" },
 				filetypes = { "markdown", "rmarkdown", "quarto" },
@@ -45,7 +47,29 @@ return {
 					},
 				},
 			})
+			lspconfig.air.setup({
+				on_attach = function(_, bufnr)
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						buffer = bufnr,
+						callback = function()
+							vim.lsp.buf.format()
+						end,
+					})
+				end,
+			})
+			lspconfig.r_language_server.setup({
+				on_attach = function(client, _)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
+				end,
+			})
+			lspconfig.volar.setup({
+				capabilities = capabilities,
+				filetypes = { "typescript", "javascript", "vue", "json" },
+				root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+			})
 			lspconfig.emmet_language_server.setup({
+				capabilities = capabilities,
 				filetypes = {
 					"css",
 					"eruby",
@@ -103,6 +127,7 @@ return {
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.lsp.set_log_level("debug")
 		end,
 	},
 }

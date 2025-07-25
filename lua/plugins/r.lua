@@ -51,7 +51,7 @@ return {
 						vim.api.nvim_buf_set_keymap(
 							0,
 							"n",
-							"<LocalLeader>ss",
+							"<LocalLeader>dd",
 							":normal! viw<CR><Plug>RDSendSelection",
 							{}
 						)
@@ -62,7 +62,7 @@ return {
 				},
 				min_editor_width = 72,
 				rconsole_width = 78,
-				rmdchunk = "``",
+				-- rmdchunk = "``",
 				auto_start = "on startup",
 				disable_cmds = {
 					"RClearConsole",

@@ -23,11 +23,24 @@ return {
 					"css",
 					"dot",
 					"javascript",
+					"vue",
+					"typescript",
 					-- "latex",
 				},
 				highlight = { enable = true },
 				indent = { enable = true },
 			})
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			parser_config.stan = {
+				install_info = {
+					url = "https://github.com/WardBrian/tree-sitter-stan",
+					files = { "src/parser.c" },
+					branch = "main",
+					generate_requires_npm = false,
+					requires_generate_from_grammar = false,
+				},
+				filetype = "stan",
+			}
 		end,
 	},
 }

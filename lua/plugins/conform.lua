@@ -20,9 +20,9 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				markdown = { "prettier" },
-				quarto = { "prettier","my_styler" },
-				r = { "my_styler" },
-				rmd = { "my_styler" },
+				quarto = { "injected", "prettier" },
+				r = { "air" },
+				rmd = { "injected", "prettier" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
