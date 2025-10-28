@@ -7,22 +7,6 @@ return {
 		tag = "0.1.5",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"BurntSushi/ripgrep",
-			{
-				"jmbuhr/telescope-zotero.nvim",
-				dependencies = {
-					{ "kkharji/sqlite.lua" },
-				},
-				-- options:
-				-- to use the default opts:
-				opts = {},
-				-- to configure manually:
-				config = function()
-					local zotero = require("zotero")
-					zotero.setup({})
-					vim.keymap.set("n", "<leader>fz", ":Telescope zotero<cr>", { desc = "[z]otero" })
-				end,
-			},
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -46,7 +30,6 @@ return {
 			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
 
 			telescope.load_extension("ui-select")
-			telescope.load_extension("zotero")
 		end,
 	},
 }

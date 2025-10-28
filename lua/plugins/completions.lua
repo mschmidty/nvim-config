@@ -22,7 +22,6 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			"R-nvim/cmp-r",
 			"jc-doyle/cmp-pandoc-references",
 		},
 		config = function()
@@ -65,7 +64,6 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" }, -- For luasnip users.
-					{ name = "cmp_r" },
 					{ name = "buffer" },
 					{ name = "path" },
 					-- { name = "pandoc_references" },
