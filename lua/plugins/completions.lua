@@ -39,13 +39,6 @@ return {
 				enabled = function()
 					return _G.cmp_active
 				end,
-				-- enabled = function()
-				-- 	if vim.bo.filetype == "markdown" then
-				-- 		return false
-				-- 	end
-				-- 	return true
-				-- end,
-
 				snippet = {
 					expand = function(args)
 						ls.lsp_expand(args.body)

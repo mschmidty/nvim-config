@@ -3,6 +3,8 @@ return {
 	{
 		"williamboman/mason.nvim",
 		lazy = false,
+		version = ">=2.0.0",
+		build = ":MasonUpdate",
 		config = function()
 			require("mason").setup({
 				PATH = "prepend",
@@ -10,11 +12,13 @@ return {
 		end,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		lazy = false,
-		opts = {
-			auto_install = true,
-		},
+		config = function()
+			require("mason-lspconfig").setup({
+				automatic_installation = true,
+			})
+		end,
 	},
 	{
 		"neovim/nvim-lspconfig",

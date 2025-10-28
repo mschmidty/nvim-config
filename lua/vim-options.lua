@@ -26,6 +26,8 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "qmd" },
 	callback = function()
 		vim.opt_local.linebreak = true
+		vim.opt.conceallevel = 2
+		vim.opt.concealcursor = "nc" -- optional: show conceal in normal and command modes
 	end,
 })
 
