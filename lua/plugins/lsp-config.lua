@@ -63,11 +63,11 @@ return {
 					client.server_capabilities.documentRangeFormattingProvider = false
 				end,
 			})
-			lspconfig.volar.setup({
-				capabilities = capabilities,
-				filetypes = { "typescript", "javascript", "vue", "json" },
-				root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
-			})
+			-- lspconfig.volar.setup({
+			-- 	capabilities = capabilities,
+			-- 	filetypes = { "typescript", "javascript", "vue", "json" },
+			-- 	root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+			-- })
 			lspconfig.emmet_language_server.setup({
 				capabilities = capabilities,
 				filetypes = {
