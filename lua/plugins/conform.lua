@@ -23,6 +23,7 @@ return {
 				quarto = { "injected", "prettier" },
 				r = { "air" },
 				rmd = { "injected", "prettier" },
+				typst = { "typstyle" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
