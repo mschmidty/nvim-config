@@ -4,21 +4,12 @@ return {
 	config = function()
 		local conform = require("conform")
 		conform.setup({
-			formatters = {
-				my_styler = {
-					command = "R",
-					-- A list of strings, or a function that returns a list of strings
-					-- Return a single string instead of a list to run the command in a shell
-					args = { "-s", "-e", "styler::style_file(commandArgs(TRUE))", "--args", "$FILENAME" },
-					stdin = false,
-				},
-			},
 			formatters_by_ft = {
 				javascript = { "prettier" },
 				css = { "prettier" },
 				html = { "prettier" },
 				lua = { "stylua" },
-				python = { "isort", "black" },
+				python = { "ruff_format", "ruff_fix" },
 				markdown = { "prettier" },
 				quarto = { "injected", "prettier" },
 				r = { "air" },

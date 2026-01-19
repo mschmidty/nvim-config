@@ -34,6 +34,19 @@ return {
 			})
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+					diagnostics = {
+						library = {
+							vim.api.nvim_get_runtime_file("", true),
+						},
+						checkThirdParty = false,
+					},
+				},
 			})
 			lspconfig.ltex.setup({
 				cmd = { "ltex-ls" },

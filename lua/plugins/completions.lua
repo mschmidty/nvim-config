@@ -76,7 +76,7 @@ return {
 					{ name = "buffer" },
 					{ name = "path" },
 					-- { name = "pandoc_references" },
-					-- { name = "lua_ls" },
+					{ name = "lua_ls" },
 				}),
 			})
 			vim.keymap.set("n", "<leader>tc", function()
