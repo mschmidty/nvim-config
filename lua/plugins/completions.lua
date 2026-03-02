@@ -22,6 +22,9 @@ return {
 
 	opts = {
 		-- See :h blink-cmp-config-keymap for defining your own keymap
+		enabled = function()
+			return vim.g.blink_cmp_enabled ~= false
+		end,
 		keymap = { preset = "default" },
 		snippets = { preset = "luasnip" },
 
@@ -48,4 +51,19 @@ return {
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
 	opts_extend = { "sources.default" },
+	config = function(_, opts)
+		-- Initialize blink with your opts
+		require("blink.cmp").setup(opts)
+
+		-- Create the toggle keybinding (using <leader>ub as an example)
+		vim.keymap.set("n", "<leader>tc", function()
+			if vim.g.blink_cmp_enabled == false then
+				vim.g.blink_cmp_enabled = true
+				print("Blink.cmp: ON")
+			else
+				vim.g.blink_cmp_enabled = false
+				print("Blink.cmp: OFF")
+			end
+		end, { desc = "Toggle Blink Completion" })
+	end,
 }
