@@ -32,7 +32,7 @@ return {
 					-- Use a vertical split for the REPL
 					repl_definition = {
 						python = {
-							command = { "ipython", "--no-autoindent" }, -- IPython is crucial (see below)
+							command = { "ipython", "--no-autoindent", "--matplotlib=qt" }, -- IPython is crucial (see below)
 						},
 					},
 					repl_open_cmd = require("iron.view").split.vertical.botright(0.4),

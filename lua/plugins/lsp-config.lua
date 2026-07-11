@@ -52,6 +52,9 @@ return {
 					},
 				},
 			})
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.ltex.setup({
 				cmd = { "ltex-ls" },
 				filetypes = { "markdown", "rmarkdown", "quarto" },

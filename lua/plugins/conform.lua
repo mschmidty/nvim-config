@@ -12,6 +12,7 @@ return {
 				python = { "ruff_format", "ruff_fix" },
 				markdown = { "prettier" },
 				quarto = { "injected", "prettier" },
+				astro = { "prettier" },
 				r = { "air" },
 				rmd = { "injected", "prettier" },
 				typst = { "typstyle" },
