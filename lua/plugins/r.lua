@@ -13,6 +13,16 @@ return {
 						-- opportunity to create mappings local to buffers.
 						vim.api.nvim_buf_set_keymap(0, "n", "<Enter>", "<Plug>RDSendLine", {})
 						vim.api.nvim_buf_set_keymap(0, "v", "<Enter>", "<Plug>RSendSelection", {})
+						vim.api.nvim_create_autocmd("FileType", {
+							pattern = { "quarto", "rmd" },
+							callback = function()
+								vim.keymap.set("i", "``", "<Plug>RmdInsertChunk", {
+									buffer = true,
+									remap = true,
+									desc = "Insert code chunk",
+								})
+							end,
+						})
 						-- vim.api.nvim_buf_set_keymap(
 						-- 	0,
 						-- 	"n",
