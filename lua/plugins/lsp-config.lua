@@ -57,13 +57,6 @@ return {
 				},
 			})
 
-			vim.lsp.config("r_language_server", {
-				on_attach = function(client, _)
-					client.server_capabilities.documentFormattingProvider = false
-					client.server_capabilities.documentRangeFormattingProvider = false
-				end,
-			})
-
 			-- vim.lsp.config("volar", {
 			--     filetypes = { "typescript", "javascript", "vue", "json" },
 			--     root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
@@ -140,7 +133,6 @@ return {
 				"gopls",
 				"ltex",
 				"air",
-				"r_language_server",
 				"harper_ls",
 				"emmet_language_server",
 			})
