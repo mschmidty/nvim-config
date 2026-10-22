@@ -2,7 +2,6 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
-vim.g.background = "light"
 
 -- vim.g.tmux_navigator_no_mappings = 1
 
@@ -25,7 +24,7 @@ vim.wo.wrap = false
 
 -- on wrap don't break lines
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown", "qmd" },
+	pattern = { "markdown", "quarto", "rmd" },
 	callback = function()
 		vim.opt_local.linebreak = true
 	end,

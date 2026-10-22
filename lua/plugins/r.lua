@@ -13,16 +13,13 @@ return {
 						-- opportunity to create mappings local to buffers.
 						vim.api.nvim_buf_set_keymap(0, "n", "<Enter>", "<Plug>RDSendLine", {})
 						vim.api.nvim_buf_set_keymap(0, "v", "<Enter>", "<Plug>RSendSelection", {})
-						vim.api.nvim_create_autocmd("FileType", {
-							pattern = { "quarto", "rmd" },
-							callback = function()
-								vim.keymap.set("i", "``", "<Plug>RmdInsertChunk", {
-									buffer = true,
-									remap = true,
-									desc = "Insert code chunk",
-								})
-							end,
-						})
+						if vim.bo.filetype == "quarto" or vim.bo.filetype == "rmd" then
+							vim.keymap.set("i", "``", "<Plug>RmdInsertChunk", {
+								buffer = true,
+								remap = true,
+								desc = "Insert code chunk",
+							})
+						end
 						-- vim.api.nvim_buf_set_keymap(
 						-- 	0,
 						-- 	"n",
@@ -85,12 +82,8 @@ return {
 			-- If using fish shell, you could put in your config.fish:
 			-- alias r "R_AUTO_START=true nvim"
 			if vim.env.R_AUTO_START == "true" then
-				opts.auto_start = 1
+				opts.auto_start = "on startup"
 				opts.objbr_auto_start = true
-			end
-			if vim.loop.os_uname().sysname == "Windows_NT" then
-				opts.R_path = "C:\\Users\\MichaelSchmidt2\\AppData\\Local\\Programs\\R\\R-4.3.0\\bin\\x64"
-			else
 			end
 			require("r").setup(opts)
 			vim.g.rout_follow_colorscheme = true

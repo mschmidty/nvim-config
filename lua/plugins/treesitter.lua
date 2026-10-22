@@ -2,39 +2,36 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
+		lazy = false,
 		dependencies = {
 			"Glench/Vim-Jinja2-Syntax",
 		},
 		build = ":TSUpdate",
 		config = function()
 			local config = require("nvim-treesitter")
-			config.setup({
-				auto_install = true,
-				ensure_installed = {
-					"r",
-					"markdown",
-					"markdown_inline",
-					"bash",
-					"yaml",
-					"lua",
-					"vim",
-					"query",
-					"vimdoc",
-					"html",
-					"css",
-					"dot",
-					"javascript",
-					"vue",
-					"typescript",
-					"python",
-					-- "latex",
-				},
+			config.install({
+				"r",
+				"markdown",
+				"markdown_inline",
+				"bash",
+				"yaml",
+				"lua",
+				"vim",
+				"query",
+				"vimdoc",
+				"html",
+				"css",
+				"dot",
+				"javascript",
+				"vue",
+				"typescript",
+				"python",
+				-- "latex",
 			})
 			vim.treesitter.language.register("markdown", { "rmd", "quarto" })
 			vim.api.nvim_create_autocmd("FileType", {
-				pattern = { "quarto", "rmd", "markdown" },
 				callback = function(args)
-					vim.treesitter.start(args.buf, "markdown")
+					pcall(vim.treesitter.start, args.buf)
 				end,
 			})
 			-- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
