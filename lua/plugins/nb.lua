@@ -1,5 +1,5 @@
 return {
-	dir = "~/Dropbox/nvim/nb.nvim",
+	"mschmidty/nb.nvim",
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
 		{

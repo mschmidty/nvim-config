@@ -1,5 +1,5 @@
 return {
-	dir = "~/Dropbox/nvim/rtargets.nvim",
+	"mschmidty/rtargets.nvim",
 	config = function()
 		require("rtargets").setup({})
 	end,
