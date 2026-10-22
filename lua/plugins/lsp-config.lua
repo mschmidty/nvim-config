@@ -108,7 +108,6 @@ return {
 			vim.lsp.config("emmet_language_server", {
 				filetypes = {
 					"css",
-					"eruby",
 					"html",
 					"javascript",
 					"javascriptreact",
@@ -136,7 +135,6 @@ return {
 			-- 3. Enable all configured servers
 			vim.lsp.enable({
 				"ts_ls",
-				"solargraph",
 				"html",
 				"lua_ls",
 				"gopls",
