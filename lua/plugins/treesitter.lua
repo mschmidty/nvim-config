@@ -3,9 +3,6 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
 		lazy = false,
-		dependencies = {
-			"Glench/Vim-Jinja2-Syntax",
-		},
 		build = ":TSUpdate",
 		config = function()
 			local config = require("nvim-treesitter")

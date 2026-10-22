@@ -18,15 +18,15 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 vim.opt.spelllang = "en_us"
-vim.opt.spell = true
 
 vim.wo.wrap = false
 
--- on wrap don't break lines
+-- on wrap don't break lines, and enable spellcheck for prose filetypes
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown", "quarto", "rmd" },
+	pattern = { "markdown", "quarto", "rmd", "gitcommit", "text" },
 	callback = function()
 		vim.opt_local.linebreak = true
+		vim.opt_local.spell = true
 	end,
 })
 
