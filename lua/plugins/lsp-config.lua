@@ -24,6 +24,7 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"saghen/blink.cmp",
+			"barreiroleo/ltex_extra.nvim",
 		},
 		lazy = false,
 		config = function()
@@ -44,57 +45,25 @@ return {
 					},
 				},
 			})
-
-			vim.lsp.config("ltex", {
-				cmd = { "ltex-ls" },
-				filetypes = { "markdown", "rmd", "quarto" },
+			vim.lsp.config("ltex_plus", {
+				on_attach = function(client, bufnr)
+					-- Initialize ltex_extra when ltex_plus attaches to the buffer
+					require("ltex_extra").setup({
+						load_langs = { "en-US" }, -- Add any languages you write in
+						init_check = true, -- Load saved dictionaries on startup
+						path = vim.fn.stdpath("config") .. "/spell", -- Where dictionaries and disabled rules are stored
+						log_level = "none",
+					})
+				end,
 				settings = {
 					ltex = {
+						enabled = { "rmd", "quarto", "latex", "tex", "bib", "markdown", "org", "text" },
 						language = "en-US",
+						checkFrequency = "save",
 						additionalRules = {
 							enablePickyRules = true,
+							motherTongue = "en-US",
 						},
-					},
-				},
-			})
-
-			-- vim.lsp.config("volar", {
-			--     filetypes = { "typescript", "javascript", "vue", "json" },
-			--     root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
-			-- })
-
-			vim.lsp.config("harper_ls", {
-				filetypes = { "markdown" },
-				settings = {
-					["harper-ls"] = {
-						userDictPath = "",
-						workspaceDictPath = "",
-						fileDictPath = "",
-						linters = {
-							SpellCheck = true,
-							SpelledNumbers = false,
-							AnA = true,
-							SentenceCapitalization = true,
-							UnclosedQuotes = true,
-							WrongQuotes = false,
-							LongSentences = true,
-							RepeatedWords = true,
-							Spaces = true,
-							Matcher = true,
-							CorrectNumberSuffix = true,
-						},
-						codeActions = {
-							ForceStable = false,
-						},
-						markdown = {
-							IgnoreLinkTitle = false,
-						},
-						diagnosticSeverity = "hint",
-						isolateEnglish = false,
-						dialect = "American",
-						maxFileLength = 120000,
-						ignoredLintsPath = "",
-						excludePatterns = {},
 					},
 				},
 			})
@@ -132,7 +101,7 @@ return {
 				"html",
 				"lua_ls",
 				"gopls",
-				"ltex",
+				"ltex_plus",
 				"air",
 				"harper_ls",
 				"emmet_language_server",
@@ -140,9 +109,9 @@ return {
 
 			-- 4. Function to toggle ltex language server on/off
 			function ToggleLtex()
-				local clients = vim.lsp.get_clients({ name = "ltex" })
+				local clients = vim.lsp.get_clients({ name = "ltex_plus" })
 				if #clients > 0 then
-					vim.lsp.enable("ltex", false)
+					vim.lsp.enable("ltex_plus", false)
 					print("ltex language server stopped")
 				else
 					vim.lsp.enable("ltex", true)
